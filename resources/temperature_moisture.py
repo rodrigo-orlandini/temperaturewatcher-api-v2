@@ -22,6 +22,8 @@ class TemperatureMoisture(Resource):
         temperature_moisture = temperature_moisture_schema.load(json)
 
         try:
+            temperature_moisture["register_date"] = datetime.now().strftime("%m/%d/%Y")
+            print(temperature_moisture)
             temperature_moisture.register_date = datetime.now().strftime("%m/%d/%Y")
             temperature_moisture.register_time = datetime.now().strftime("%H:%M:%S")
             temperature_moisture.save_to_database()
