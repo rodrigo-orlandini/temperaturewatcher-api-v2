@@ -9,7 +9,7 @@ class ControllerModel(db.Model):
 
     @classmethod
     def find_last(cls) -> "ControllerModel":
-        return cls.query.order_by(db.desc(cls.id)).limit(1).first()
+        return cls.query.order_by(db.desc(cls.id)).limit(1).first() 
 
     def save_to_database(self):
         db.session.add(self)
