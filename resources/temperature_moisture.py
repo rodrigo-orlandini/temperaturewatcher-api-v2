@@ -1,3 +1,4 @@
+import traceback
 from datetime import datetime
 from flask import request
 from flask_restful import Resource
@@ -26,4 +27,5 @@ class TemperatureMoisture(Resource):
             temperature_moisture.save_to_database()
             return {"message": "Data registered in database."}, 201
         except:
+            traceback.print_exc()
             return {"message": "Internal Server Error."}, 500
