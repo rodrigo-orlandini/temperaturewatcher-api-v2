@@ -1,0 +1,9 @@
+Flask==1.1.2
+Flask-SQLAlchemy==2.4.4
+Flask-RESTful==0.3.8
+Flask-Marshmallow
+PyJWT==1.7.1
+marshmallow-sqlalchemy
+marshmallow
+psycopg2
+uwsgi
