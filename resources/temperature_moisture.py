@@ -24,7 +24,7 @@ class TemperatureMoisture(Resource):
         try:
             data["register_date"] = datetime.now().strftime("%m/%d/%Y")
             data["register_time"] = datetime.now().strftime("%H:%M:%S")
-            temperature_moisture = TemperatureMoistureModel(data**)
+            temperature_moisture = TemperatureMoistureModel(**data)
             temperature_moisture.save_to_database()
             return {"message": "Data registered in database."}, 201
         except:
