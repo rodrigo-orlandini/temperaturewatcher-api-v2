@@ -16,9 +16,10 @@ class Controller(Resource):
     @classmethod
     def post(cls):
         json = request.get_json()
-        controller = controller_schema.load(json)
+        data = controller_schema.load(json)
 
         try:
+            controller = ControllerModel(**data)
             controller.save_to_database()
             return {"message": "Controller updated in database."}, 201
         except:
