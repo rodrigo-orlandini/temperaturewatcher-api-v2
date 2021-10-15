@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import request
 from flask_restful import Resource
 
@@ -20,6 +21,8 @@ class TemperatureMoisture(Resource):
         temperature_moisture = temperature_moisture_schema.load(json)
 
         try:
+            temperature_moisture.register_date = datetime.now().strftime("%m/%d/%Y")
+            temperature_moisture.register_time = datetime.now().strftime("%H:%M:%S")
             temperature_moisture.save_to_database()
             return {"message": "Data registered in database."}, 201
         except:
