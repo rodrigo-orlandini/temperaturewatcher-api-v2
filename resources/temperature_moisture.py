@@ -19,11 +19,12 @@ class TemperatureMoisture(Resource):
     @classmethod
     def post(cls):
         json = request.get_json()
-        temperature_moisture = temperature_moisture_schema.load(json)
+        data = temperature_moisture_schema.load(json)
 
         try:
-            temperature_moisture["register_date"] = datetime.now().strftime("%m/%d/%Y")
-            temperature_moisture["register_date"] = datetime.now().strftime("%H:%M:%S")
+            data["register_date"] = datetime.now().strftime("%m/%d/%Y")
+            data["register_time"] = datetime.now().strftime("%H:%M:%S")
+            temperature_moisture = TemperatureMoistureModel(data**)
             temperature_moisture.save_to_database()
             return {"message": "Data registered in database."}, 201
         except:
